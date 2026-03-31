@@ -67,7 +67,7 @@ function App() {
     setLoading(true)
 
     try {
-      const response = await axios.post('http://localhost:5000/apis/chat', {
+      const response = await axios.post('https://dsa-engine.vercel.app/apis/chat', {
         dsaQuery: text,
         conversationHistory: messages.map(m => ({
           role: m.sender === 'user' ? 'user' : 'assistant',
