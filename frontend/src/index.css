@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, Poppins, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Code Block Styling */
+pre {
+  background-color: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  overflow-x: auto;
+  word-break: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  font-size: 0.8rem !important;
+  word-break: break-word;
+  white-space: pre-wrap;
+  display: block;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #e2e8f0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingDots {
+  0%, 20% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  80%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-typing-dots {
+  animation: typingDots 1s infinite;
+}
+
+/* Custom Classes */
+.bg-primary {
+  background-color: #0f172a;
+}
+
+.bg-secondary {
+  background-color: #1e293b;
+}
+
+.text-primary {
+  color: #e2e8f0;
+}
+
+.text-secondary {
+  color: #94a3b8;
+}
+
+.border-subtle {
+  border-color: #334155;
+}
+
+.shadow-subtle {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Highlight.js Theme Override */
+.hljs {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+.hljs-attr,
+.hljs-attribute {
+  color: #22c55e;
+}
+
+.hljs-string {
+  color: #fbbf24;
+}
+
+.hljs-number {
+  color: #60a5fa;
+}
+
+.hljs-literal {
+  color: #60a5fa;
+}
+
+.hljs-type,
+.hljs-class {
+  color: #22c55e;
+}
+
+.hljs-function {
+  color: #60a5fa;
+}
+
+.hljs-keyword {
+  color: #c084fc;
+}
+
+.hljs-comment {
+  color: #6b7280;
+}
+
+/* Prose Styling for Markdown */
+.prose {
+  color: inherit;
+}
+
+.prose-invert h1,
+.prose-invert h2,
+.prose-invert h3,
+.prose-invert h4,
+.prose-invert h5,
+.prose-invert h6 {
+  color: #e2e8f0;
+}
+
+.prose-invert a {
+  color: #3b82f6;
+}
+
+.prose-invert strong {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.prose-invert code {
+  background-color: #0f172a;
+  color: #22c55e;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose-invert pre {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.prose-invert blockquote {
+  border-left-color: #3b82f6;
+  color: #94a3b8;
+}
+
+.prose-invert ul,
+.prose-invert ol {
+  color: #e2e8f0;
+}
+
+.prose-invert li::marker {
+  color: #3b82f6;
+}
+
+

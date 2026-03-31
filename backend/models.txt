@@ -1,0 +1,9 @@
+model: "llama-3.3-70b-versatile"   // ⭐ best
+model: "llama-3.1-8b-instant"      // ⚡ fastest
+
+role : "user"
+"assistant"
+"system"
+
+GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY_HERE"
+GROQ_API_KEY = "YOUR_GROQ_API_KEY_HERE"
