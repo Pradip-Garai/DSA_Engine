@@ -4,33 +4,21 @@ const Header = () => {
   const [imageError, setImageError] = useState(false)
 
   return (
-    <header className="sticky top-0 z-40 bg-bg-primary border-b border-subtle shadow-subtle">
-      <div className="max-w-full px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Left: Logo + Title */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-brand-primary text-white font-bold text-xl overflow-hidden">
-              {imageError ? (
-                <span>λ</span>
-              ) : (
-                <img 
-                  src="/LOGO.png" 
-                  alt="DSA Instructor Logo" 
-                  className="w-full h-full object-cover"
-                  onError={() => setImageError(true)}
-                />
-              )}
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-text-primary">DSA Instructor</h1>
-            </div>
+    <header className="sticky top-0 z-50 border-b border-slate-700 bg-slate-950/95 py-3 shadow-lg backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white font-black text-xl">
+            λ
           </div>
+          <div>
+            <h1 className="text-xl font-bold text-white">DSA Instructor</h1>
+            <p className="text-sm text-slate-300">Learn concepts with guided AI and step-by-step examples</p>
+          </div>
+        </div>
 
-          {/* Right: Status */}
-          <div className="flex items-center gap-2 text-text-secondary text-sm">
-            <div className="w-2 h-2 bg-brand-accent rounded-full"></div>
-            <span>AI Powered</span>
-          </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          <span className="text-sm text-slate-300">AI Enabled</span>
         </div>
       </div>
     </header>

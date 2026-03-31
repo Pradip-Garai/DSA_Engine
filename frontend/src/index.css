@@ -111,6 +111,16 @@ code {
   color: #e2e8f0;
 }
 
+.text-highlight {
+  color: #38bdf8;
+}
+
+.card-soft {
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(8px);
+}
+
 .text-secondary {
   color: #94a3b8;
 }

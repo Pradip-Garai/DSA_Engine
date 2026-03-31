@@ -104,38 +104,62 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-bg-primary">
+    <div className="min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-text-primary">
       <Header />
-      
-      {/* Main Chat Area */}
-      <div className="flex-1 overflow-y-auto pb-32">
-        <div className="max-w-5xl mx-auto w-full px-6">
-          {/* Welcome Screen or Messages */}
-          {messages.length === 0 ? (
-            <Welcome onAskQuestion={handleSendMessage} />
-          ) : (
-            <div className="pt-6">
-              {messages.map((msg) => (
-                <ChatMessage key={msg.id} message={msg} />
+
+      <main className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 overflow-hidden h-[calc(100vh-96px)]">
+        <div className="grid gap-5 md:grid-cols-[300px_1fr] h-full">
+          <aside className="hidden md:block rounded-2xl border border-subtle bg-slate-900/70 p-4 shadow-subtle backdrop-blur overflow-y-auto h-full">
+            <h2 className="text-lg font-bold mb-3">Study Hub</h2>
+            <p className="text-sm text-text-secondary mb-4">Fast helpers and concept refreshers for students.</p>
+            <ul className="space-y-2">
+              {['Array', 'LinkedList', 'Stack', 'Queue', 'Graph', 'DP', 'Sorting'].map((topic) => (
+                <li key={topic}>
+                  <button
+                    onClick={() => handleSendMessage(`Explain ${topic} with example`)}
+                    className="w-full text-left rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm hover:border-blue-500 hover:bg-blue-500/20 transition"
+                  >
+                    {topic}
+                  </button>
+                </li>
               ))}
-              {loading && (
-                <div className="flex items-center gap-2 py-4 animate-fadeIn">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-brand-primary rounded-full animate-typing-dots"></div>
-                    <div className="w-2 h-2 bg-brand-primary rounded-full animate-typing-dots" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-2 h-2 bg-brand-primary rounded-full animate-typing-dots" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
-                  <span className="text-text-secondary text-sm">Thinking...</span>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
+            </ul>
+            <div className="mt-5 rounded-lg bg-slate-800 p-3">
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-blue-300">Tip</h3>
+              <p className="text-xs text-text-secondary mt-1">Ask precise questions for the best step-by-step explanations. E.g., "Explain Dijkstra’s algorithm with complexity".</p>
             </div>
-          )}
+          </aside>
+
+          <section className="flex flex-col rounded-2xl border border-subtle bg-slate-900/70 p-4 shadow-subtle backdrop-blur overflow-hidden h-full">
+            {messages.length === 0 ? (
+              <Welcome onAskQuestion={handleSendMessage} />
+            ) : (
+              <div className="flex-1 overflow-y-auto pb-6 pr-2 h-full">
+                {messages.map((msg) => (
+                  <ChatMessage key={msg.id} message={msg} />
+                ))}
+                {loading && (
+                  <div className="flex items-center gap-2 py-4 animate-fadeIn">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-typing-dots"></div>
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-typing-dots" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-typing-dots" style={{ animationDelay: '0.4s' }}></div>
+                    </div>
+                    <span className="text-text-secondary text-sm">Working on your answer...</span>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            )}
+          </section>
+        </div>
+      </main>
+
+      <div className="fixed bottom-0 left-0 right-0 border-t border-subtle bg-slate-950/90 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+          <ChatInput onSendMessage={handleSendMessage} disabled={loading} />
         </div>
       </div>
-
-      {/* Fixed Input Bar */}
-      <ChatInput onSendMessage={handleSendMessage} disabled={loading} />
     </div>
   )
 }

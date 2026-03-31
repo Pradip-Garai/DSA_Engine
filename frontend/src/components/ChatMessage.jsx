@@ -61,26 +61,23 @@ const ChatMessage = ({ message }) => {
 
   return (
     <div className={`flex ${isAssistant ? 'justify-start' : 'justify-end'} mb-4 animate-fadeIn`}>
-      <div className={`flex gap-3 max-w-5xl ${isAssistant ? '' : 'flex-row-reverse'}`}>
-        {/* Avatar */}
-        <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs mt-1 ${
-          isAssistant 
-            ? 'bg-brand-primary text-white' 
-            : 'bg-brand-accent text-bg-primary'
+      <div className={`flex gap-3 max-w-4xl ${isAssistant ? '' : 'flex-row-reverse'}`}>
+        <div className={`flex-shrink-0 h-9 w-9 rounded-full flex items-center justify-center text-xs font-bold ${
+          isAssistant
+            ? 'bg-blue-500 text-white'
+            : 'bg-emerald-500 text-slate-950'
         }`}>
           {isAssistant ? 'AI' : 'You'}
         </div>
 
-        {/* Message Container */}
-        <div className="flex flex-col gap-2 flex-1">
-          {/* Message Card */}
-          <div className={`px-4 py-3 rounded-lg ${
+        <div className="flex flex-col gap-1 flex-1">
+          <div className={`rounded-xl border px-4 py-3 shadow-md ${
             isAssistant
-              ? 'bg-bg-secondary border border-subtle shadow-subtle prose prose-invert max-w-none'
-              : 'bg-brand-primary text-white shadow-subtle'
+              ? 'border-slate-700 bg-slate-900 text-slate-100 prose prose-invert'
+              : 'border-emerald-400 bg-emerald-500/20 text-slate-900'
           }`}>
             {isAssistant ? (
-              <ReactMarkdown 
+              <ReactMarkdown
                 components={markdownComponents}
                 rehypePlugins={[rehypeHighlight]}
                 remarkPlugins={[]}
@@ -92,16 +89,16 @@ const ChatMessage = ({ message }) => {
                 {displayContent}
               </p>
             )}
-            {/* Typing cursor animation */}
+
             {message.isTyping && isAssistant && (
-              <span className="inline-block w-2 h-5 bg-text-primary ml-1 animate-pulse"></span>
+              <span className="inline-block ml-1 h-4 w-1 rounded bg-slate-200 animate-pulse" />
             )}
           </div>
-          
-          {/* Timestamp */}
-          <span className="text-text-secondary text-xs px-1">
-            {formatTime(message.timestamp)}
-          </span>
+
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <span>{isAssistant ? 'DSA Assistant' : 'You'}</span>
+            <span>{formatTime(message.timestamp)}</span>
+          </div>
         </div>
       </div>
     </div>

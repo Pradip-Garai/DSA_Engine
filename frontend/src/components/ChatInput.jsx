@@ -11,38 +11,43 @@ const ChatInput = ({ onSendMessage, disabled }) => {
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      if (input.trim() && !disabled) {
+        handleSubmit(e)
+      }
+    }
+  }
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-bg-primary border-t border-subtle shadow-subtle">
-      <div className="max-w-5xl mx-auto w-full px-6 py-4">
-        {/* Input Form */}
-        <form onSubmit={handleSubmit} className="flex gap-3">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            disabled={disabled}
-            placeholder="Ask anything about DSA, data structures, or algorithms..."
-            className="flex-1 px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all disabled:opacity-50 text-sm"
-          />
-          <button
-            type="submit"
-            disabled={disabled || !input.trim()}
-            className="px-4 py-3 bg-brand-primary text-white rounded-lg font-medium hover:bg-blue-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center"
-          >
-            {disabled ? (
-              <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            )}
-          </button>
-        </form>
-      </div>
-    </div>
+    <form onSubmit={handleSubmit} className="flex items-center gap-2 rounded-2xl border border-slate-700 bg-slate-900/95 p-2 shadow-lg">
+      <textarea
+        rows={1}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        disabled={disabled}
+        placeholder="Ask a precise question (Shift+Enter for newline, Enter to send)"
+        className="h-[46px] w-full flex-1 resize-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+      />
+      <button
+        type="submit"
+        disabled={disabled || !input.trim()}
+        className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white shadow-md hover:from-blue-400 hover:to-indigo-400 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {disabled ? (
+          <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+          </svg>
+        ) : (
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        )}
+      </button>
+    </form>
   )
 }
 
