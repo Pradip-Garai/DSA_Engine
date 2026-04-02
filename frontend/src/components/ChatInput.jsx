@@ -29,6 +29,7 @@ const ChatInput = ({ onSendMessage, disabled }) => {
         onKeyDown={handleKeyDown}
         disabled={disabled}
         placeholder="Ask a precise question (Shift+Enter for newline, Enter to send)"
+        style={{ color: '#ffffff' }}
         className="h-[46px] w-full flex-1 resize-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
       />
       <button
